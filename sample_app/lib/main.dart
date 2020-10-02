@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ShoppingList extends StatefulWidget {
-
   ShoppingList({Key key, this.products}) : super(key: key);
 
   final List<Product> products;
