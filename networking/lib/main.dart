@@ -9,35 +9,24 @@ Future<Album> fetchAlbum() async {
       await http.get('https://jsonplaceholder.typicode.com/albums/1');
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
     return Album.fromJson(json.decode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load album');
   }
 }
 
-Future<Album> updateAlbum(String title) async {
-  final http.Response response = await http.put(
-    'https://jsonplaceholder.typicode.com/albums/1',
+Future<Album> deleteAlbum(String id) async {
+  final http.Response response = await http.delete(
+    'https://jsonplaceholder.typicode.com/albums/$id',
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
   );
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Album.fromJson(json.decode(response.body));
+    return Album.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to update album.');
+    throw Exception('Failed to delete album.');
   }
 }
 
@@ -69,7 +58,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final TextEditingController _controller = TextEditingController();
   Future<Album> _futureAlbum;
 
   @override
@@ -81,17 +69,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Update Data Example',
+      title: 'Delete Data Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Update Data Example'),
+          title: Text('Delete Data Example'),
         ),
-        body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8.0),
+        body: Center(
           child: FutureBuilder<Album>(
             future: _futureAlbum,
             builder: (context, snapshot) {
@@ -100,16 +86,13 @@ class _MyAppState extends State<MyApp> {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(snapshot.data.title),
-                      TextField(
-                        controller: _controller,
-                        decoration: InputDecoration(hintText: 'Enter Title'),
-                      ),
+                      Text('${snapshot.data?.title ?? 'Deleted'}'),
                       RaisedButton(
-                        child: Text('Update Data'),
+                        child: Text('Delete Data'),
                         onPressed: () {
                           setState(() {
-                            _futureAlbum = updateAlbum(_controller.text);
+                            _futureAlbum =
+                              deleteAlbum(snapshot.data.id.toString());
                           });
                         },
                       ),
