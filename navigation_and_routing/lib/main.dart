@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Todo {
@@ -7,19 +8,17 @@ class Todo {
   Todo(this.title, this.description);
 }
 
-final todos = List<Todo>.generate(
-  20,
-  (i) => Todo(
-    'Todo $i',
-    'A description of what needs to be done for Todo $i',
-  ),
-);
-
 void main() {
   runApp(MaterialApp(
     title: 'Passing Data',
     home: TodosScreen(
-      todos: todos,
+      todos: List.generate(
+        20,
+        (i) => Todo(
+          'Todo $i',
+          'A description of what needs to be done for Todo $i',
+        ),
+      ),
     ),
   ));
 }
@@ -27,7 +26,6 @@ void main() {
 class TodosScreen extends StatelessWidget {
   final List<Todo> todos;
 
-  //requiring the list of todos
   TodosScreen({Key key, @required this.todos}) : super(key: key);
 
   @override
@@ -36,17 +34,24 @@ class TodosScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Todos'),
       ),
-      //passing in the ListView.builder
       body: ListView.builder(
         itemCount: todos.length,
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
+            // When a user taps the ListTile, navigate to the DetailScreen.
+            // Notice that you're not only creating a DetailScreen, you're
+            // also passing the current todo through to it.
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailScreen(todo: todos[index]),
+                  builder: (context) => DetailScreen(),
+                  // Pass the arguments as part of the RouteSettings. The
+                  // DetailScreen reads the arguments from these settings.
+                  settings: RouteSettings(
+                    arguments: todos[index],
+                  ),
                 ),
               );
             },
@@ -58,14 +63,10 @@ class TodosScreen extends StatelessWidget {
 }
 
 class DetailScreen extends StatelessWidget {
-  // Declare a field that holds the Todo.
-  final Todo todo;
-
-  // In the constructor, require a Todo.
-  DetailScreen({Key key, @required this.todo}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final Todo todo = ModalRoute.of(context).settings.arguments;
+
     // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
