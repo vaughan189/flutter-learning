@@ -1,58 +1,67 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({Key key}) : super(key: key);
-  final appTitle = 'Form Validation Demo';
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle),
-        ),
-        body: MyApp(),
-      ),
+      title: 'Text Field Focus',
+      home: MyCustomForm(),
     );
   }
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
+class MyCustomForm extends StatefulWidget {
+  MyCustomForm({Key key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyCustomFormState createState() => _MyCustomFormState();
 }
 
-class _MyAppState extends State<MyApp> {
-  final _formKey = GlobalKey<FormState>();
+class _MyCustomFormState extends State<MyCustomForm> {
+  FocusNode myFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    myFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    myFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(children: <Widget>[
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          RaisedButton(
-            onPressed: () {
-              if (_formKey.currentState.validate()) {
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text('Processing Data')));
-              }
-            },
-            child: Text('Submit'),
-          )
-        ]));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Text Field Focus'),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(children: [
+              TextField(
+                autofocus: true,
+              ),
+              // The second text field is focused on when a user taps the
+              // FloatingActionButton.
+              TextField(
+                focusNode: myFocusNode,
+              ),
+            ])),
+        floatingActionButton: FloatingActionButton(
+          // When the button is pressed,
+          // give focus to the text field using myFocusNode.
+          onPressed: () => myFocusNode.requestFocus(),
+          tooltip: 'Focus Second Text Field',
+          child: Icon(Icons.edit),
+        ));
   }
 }
