@@ -1,54 +1,42 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
-  final appTitle = 'Drawer Demo';
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appTitle,
-      home: SideMenu(title: appTitle),
+      title: 'Snack Bar Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('SnackBar Demo App'),
+        ),
+        body: MainPage(),
+      ),
     );
   }
 }
 
-class SideMenu extends StatelessWidget {
-  final String title;
-  const SideMenu({Key key, this.title}) : super(key: key);
-
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page')),
-      drawer: Drawer(
-          child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-          ),
-          ListTile(
-            title: Text('Item 1'),
-            onTap: () {
-              Navigator.pop(context);
+    return Center(
+        child: RaisedButton(
+      onPressed: () {
+        final snackBar = SnackBar(
+          content: Text('Yay! A SnackBar!'),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              // Some code to undo the change.
             },
           ),
-          ListTile(
-            title: Text('Item 2'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
-        ],
-      )),
-    );
+        );
+        Scaffold.of(context).showSnackBar(snackBar);
+      },
+      child: Text('Show SnackBar'),
+    ));
   }
 }

@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
                         onPressed: () {
                           setState(() {
                             _futureAlbum =
-                              deleteAlbum(snapshot.data.id.toString());
+                                deleteAlbum(snapshot.data.id.toString());
                           });
                         },
                       ),
