@@ -1,4 +1,4 @@
-# sample_app
+# introduction_to_widgets
 
 A new Flutter project.
 

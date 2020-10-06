@@ -1,6 +1,6 @@
 {
-    "name": "sample_app",
-    "short_name": "sample_app",
+    "name": "introduction_to_widgets",
+    "short_name": "introduction_to_widgets",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
