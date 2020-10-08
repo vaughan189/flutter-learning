@@ -7,7 +7,7 @@ import '../models/todo.dart';
 
 Future<Database> database;
 
-void initializeDb() async {
+Future initializeDb() async {
   WidgetsFlutterBinding.ensureInitialized();
   database = openDatabase(
     join(await getDatabasesPath(), 'todo_database.db'),
@@ -20,9 +20,9 @@ void initializeDb() async {
   );
 }
 
-Future<void> insertTodo(Todo todo) async {
+Future insertTodo(Todo todo) async {
   final Database db = await database;
-  await db.insert(
+  return await db.insert(
     'todos',
     todo.toMap(),
     conflictAlgorithm: ConflictAlgorithm.replace,

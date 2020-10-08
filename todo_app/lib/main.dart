@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
 import './db/methods.dart';
 
-void main(List<String> args) {
-  initializeDb();
-  runApp(TodoApp());
+void main(List<String> args) async {
+  initializeDb().then((value) => {runApp(TodoApp())});
 }
 
 class TodoApp extends StatelessWidget {
@@ -16,54 +15,84 @@ class TodoApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({Key key}) : super(key: key) {
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List allTodos;
+
+  void updateList(id, todo) {
+    setState(() {
+      allTodos = List.from(allTodos)..add(Todo(id: id, name: todo));
+    });
+  }
+
+  @override
+  initState() {
+    super.initState();
     getAllTodos();
   }
 
-  List<Object> allTodos = [];
+  getAllTodos() {
+    todos().then((value) => {
+          setState(() {
+            allTodos = value;
+          })
+        });
+  }
 
-  void getAllTodos() async {
-    allTodos = await todos();
+  delete(id) async {
+    await deleteTodo(id);
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget addTodo = AddTodo();
-    Widget todoList = ListComponent(items: allTodos);
+    Widget addTodo = AddTodo(onAdd: (id, todo) => updateList(id, todo));
+    Widget todoList =
+        ListComponent(items: allTodos, onDelete: (id) => delete(id));
 
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Todo App'),
-        ),
-        // body: Column(children: [addTodo, todoList]),
-        body: Column(
-          children: <Widget>[addTodo, Expanded(child: todoList)],
-        ));
+    if (allTodos == null) {
+      return new Scaffold(
+          appBar: new AppBar(
+            title: Text('Todo App'),
+          ),
+          body: Column(
+            children: <Widget>[
+              addTodo,
+              Expanded(child: Center(child: Text("No Todo's......")))
+            ],
+          ));
+    } else {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text('Todo App'),
+          ),
+          body: Column(
+            children: <Widget>[addTodo, Expanded(child: todoList)],
+          ));
+    }
   }
 }
 
-class AddTodo extends StatefulWidget {
-  AddTodo({Key key}) : super(key: key);
+class AddTodo extends StatelessWidget {
+  final Function onAdd;
 
-  @override
-  _AddTodoState createState() => _AddTodoState();
-}
+  AddTodo({Key key, this.onAdd}) : super(key: key);
 
-class _AddTodoState extends State<AddTodo> {
   final myController = TextEditingController();
 
-  @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
-    super.dispose();
   }
 
   void addTodo() async {
     var todo = Todo(name: myController.text);
-    await insertTodo(todo);
-    print("Todo Added: ${myController.text}");
+    var id = await insertTodo(todo);
+    this.onAdd(id, myController.text);
   }
 
   @override
@@ -89,11 +118,11 @@ class _AddTodoState extends State<AddTodo> {
 }
 
 class ListComponent extends StatelessWidget {
-  final List<Object> items;
+  final List items;
+  final Function onDelete;
 
-  ListComponent({Key key, @required this.items}) : super(key: key){
-    print('todo list ${this.items}');
-  }
+  ListComponent({Key key, @required this.items, @required this.onDelete})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -102,9 +131,18 @@ class ListComponent extends StatelessWidget {
       shrinkWrap: false,
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('${items[index]}'),
-        );
+        final item = items[index];
+        return Dismissible(
+            key: Key(item.name),
+            onDismissed: (direction) {
+              this.onDelete(item.id);
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text('${item.name} deleted')));
+            },
+            background: Container(color: Colors.red),
+            child: ListTile(
+              title: Text('${item.name}'),
+            ));
       },
     );
   }
