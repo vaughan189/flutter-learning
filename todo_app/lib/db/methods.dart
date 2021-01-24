@@ -1,16 +1,16 @@
-import 'package:flutter/widgets.dart';
+import "package:flutter/widgets.dart";
 
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import "package:path/path.dart";
+import "package:sqflite/sqflite.dart";
 
-import '../models/todo.dart';
+import "../models/todo.dart";
 
 Future<Database> database;
 
 Future initializeDb() async {
   WidgetsFlutterBinding.ensureInitialized();
   database = openDatabase(
-    join(await getDatabasesPath(), 'todo_database.db'),
+    join(await getDatabasesPath(), "todo_database.db"),
     onCreate: (db, version) {
       return db.execute(
         "CREATE TABLE todos(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)",
