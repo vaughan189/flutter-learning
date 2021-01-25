@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:todo_app/models/todo.dart';
-import './db/methods.dart';
+import "package:flutter/material.dart";
+import "package:todo_app/models/todo.dart";
+import "./db/methods.dart";
 
 void main(List<String> args) async {
   initializeDb().then((value) => {runApp(TodoApp())});
@@ -11,7 +11,7 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Todo App', home: HomePage());
+    return MaterialApp(title: "Todo App", home: HomePage());
   }
 }
 

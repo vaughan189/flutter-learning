@@ -1,4 +1,4 @@
-include: package:lint/analysis_options.yaml
+# include: package:lint/analysis_options.yaml
 analyser:
   errors:
     prefer_double_quotes: error
