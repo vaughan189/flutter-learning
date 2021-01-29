@@ -2,6 +2,9 @@ import 'package:chat_app_ui/models/chatMessageModel.dart';
 import 'package:flutter/material.dart';
 
 class ChatDetailPage extends StatefulWidget {
+  final String imageUrl;
+  ChatDetailPage(this.imageUrl);
+
   @override
   _ChatDetailPageState createState() => _ChatDetailPageState();
 }
@@ -43,8 +46,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   width: 2,
                 ),
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "<https://randomuser.me/api/portraits/men/5.jpg>"),
+                  backgroundImage: NetworkImage(widget.imageUrl),
                   maxRadius: 20,
                 ),
                 SizedBox(
