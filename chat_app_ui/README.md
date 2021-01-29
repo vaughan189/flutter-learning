@@ -2,4 +2,4 @@
 
 Chat App UI With Flutter and Dart.
 
-![Screen Shot](./screen_shots/screen_1.png =100x20)
+![Screen Shot](./screen_shots/screen_1.png)
