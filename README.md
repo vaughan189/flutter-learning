@@ -15,4 +15,5 @@ A list of all the apps created during learning flutter and dart.
 | Introduction to Widgets  | <https://flutter.dev/docs/cookbook/testing/widget>  | <https://github.com/vaughan189/flutter-learning/tree/master/introduction_to_widgets> | DONE |
 | Lists  | <https://flutter.dev/docs/cookbook/lists>  | <https://github.com/vaughan189/flutter-learning/tree/master/lists> | DONE |
 | My App  | <https://flutter.dev/docs/get-started/test-drive?tab=vscode>  | <https://github.com/vaughan189/flutter-learning/tree/master/my_app> | DONE |
+| Navigation and Routing  | <https://flutter.dev/docs/development/ui/navigation>  | <https://github.com/vaughan189/flutter-learning/tree/master/navigation_and_routing> | DONE |
 | Network Sensitive UI  | <https://medium.com/flutter-community/build-a-network-sensitive-ui-in-flutter-using-provider-and-connectivity-ddad140c9ff8>  | <https://github.com/vaughan189/flutter-learning/tree/master/network_sensitive_ui> | DONE |
