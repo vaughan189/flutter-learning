@@ -18,7 +18,7 @@ A list of all the apps created during learning flutter and dart.
 | Navigation and Routing  | <https://flutter.dev/docs/development/ui/navigation>  | <https://github.com/vaughan189/flutter-learning/tree/master/navigation_and_routing> | DONE |
 | Network Sensitive UI  | <https://medium.com/flutter-community/build-a-network-sensitive-ui-in-flutter-using-provider-and-connectivity-ddad140c9ff8>  | <https://github.com/vaughan189/flutter-learning/tree/master/network_sensitive_ui> | DONE |
 | Networking  | <https://flutter.dev/docs/cookbook#networking>  | <https://github.com/vaughan189/flutter-learning/tree/master/networking> | DONE |
-| News App  |  PENDING | <https://github.com/vaughan189/flutter-learning/tree/master/news_app> | PENDING |
+| News App  |  <https://flutternerd.com/news-app-with-newsapi-org-flutter/> | <https://github.com/vaughan189/flutter-learning/tree/master/news_app> | DONE |
 | Offline first design | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/offline_first_design> | PENDING |
 | Persistence |  <https://flutter.dev/docs/cookbook/persistence> | <https://github.com/vaughan189/flutter-learning/tree/master/persistence> | DONE |
 | Random Quote | <https://medium.com/flutter-community/flutter-essential-what-you-need-to-know-567ad25dcd8f> | <https://github.com/vaughan189/flutter-learning/tree/master/random_quote> | DONE |
