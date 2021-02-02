@@ -3,7 +3,7 @@ import 'package:news_app/helper/categories.dart';
 import 'package:news_app/helper/news.dart';
 import 'package:news_app/models/category.dart';
 import 'package:news_app/widgets/category_card.dart';
-import 'package:news_app/widgets/list_tile.dart';
+import 'package:news_app/widgets/news_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<CategorieModel> categories = [];
+  List<Category> categories = [];
   List newslist = [];
   bool loading = false;
 

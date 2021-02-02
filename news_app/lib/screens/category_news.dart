@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/helper/news.dart';
-import 'package:news_app/widgets/list_tile.dart';
+import 'package:news_app/widgets/news_tile.dart';
 
 class CategoryNews extends StatefulWidget {
   final String newsCategory;
@@ -22,7 +22,7 @@ class _CategoryNewsState extends State<CategoryNews> {
   }
 
   void getNews() async {
-    NewsForCategorie news = NewsForCategorie();
+    NewsForCategory news = NewsForCategory();
     await news.getNewsForCategory(widget.newsCategory);
     newslist = news.news;
     setState(() {

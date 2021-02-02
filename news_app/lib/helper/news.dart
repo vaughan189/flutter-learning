@@ -35,7 +35,7 @@ class News {
   }
 }
 
-class NewsForCategorie {
+class NewsForCategory {
   List<Article> news = [];
 
   Future<void> getNewsForCategory(String category) async {

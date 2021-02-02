@@ -4,7 +4,7 @@ import 'package:flutter_config/flutter_config.dart';
 import 'screens/home.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  WidgetsFlutterBinding.ensureInitialized();
   await FlutterConfig.loadEnvVariables();
   runApp(MyApp());
 }
