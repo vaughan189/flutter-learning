@@ -14,7 +14,7 @@ A list of all the apps created during learning flutter and dart.
 | Forms  | <https://flutter.dev/docs/cookbook/forms>  | <https://github.com/vaughan189/flutter-learning/tree/master/forms> | DONE |
 | Gestures  | <https://flutter.dev/docs/cookbook/gestures>  | <https://github.com/vaughan189/flutter-learning/tree/master/gestures> | DONE |
 | Introduction to Widgets  | <https://flutter.dev/docs/cookbook/testing/widget>  | <https://github.com/vaughan189/flutter-learning/tree/master/introduction_to_widgets> | DONE |
-| JWT User Authentication | <https://dev.to/carminezacc/user-authentication-jwt-authorization-with-flutter-and-node-176l>  | <https://github.com/vaughan189/flutter-learning/tree/master/jwt_user_authentication> | PENDING |
+| JWT User Authentication | <https://dev.to/carminezacc/user-authentication-jwt-authorization-with-flutter-and-node-176l>  | <https://github.com/vaughan189/flutter-learning/tree/master/jwt_user_authentication> | DONE |
 | Lists  | <https://flutter.dev/docs/cookbook/lists>  | <https://github.com/vaughan189/flutter-learning/tree/master/lists> | DONE |
 | My App  | <https://flutter.dev/docs/get-started/test-drive?tab=vscode>  | <https://github.com/vaughan189/flutter-learning/tree/master/my_app> | DONE |
 | Navigation and Routing  | <https://flutter.dev/docs/development/ui/navigation>  | <https://github.com/vaughan189/flutter-learning/tree/master/navigation_and_routing> | DONE |
