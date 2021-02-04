@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.auth0.outh_user_authentication">
+    package="com.auth0.oauth_user_authentication">
    <application
-        android:label="outh_user_authentication"
+        android:label="oauth_user_authentication"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
