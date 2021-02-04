@@ -1,6 +1,6 @@
 {
-    "name": "oauth_user_authentication",
-    "short_name": "oauth_user_authentication",
+    "name": "outh_user_authentication",
+    "short_name": "outh_user_authentication",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

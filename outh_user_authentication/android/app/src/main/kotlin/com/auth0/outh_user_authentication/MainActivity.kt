@@ -1,4 +1,4 @@
-package com.example.oauth_user_authentication
+package com.auth0.outh_user_authentication
 
 import io.flutter.embedding.android.FlutterActivity
 
