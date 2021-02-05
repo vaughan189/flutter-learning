@@ -21,7 +21,7 @@ A list of all the apps created during learning flutter and dart.
 | Network Sensitive UI  | <https://medium.com/flutter-community/build-a-network-sensitive-ui-in-flutter-using-provider-and-connectivity-ddad140c9ff8>  | <https://github.com/vaughan189/flutter-learning/tree/master/network_sensitive_ui> | DONE |
 | Networking  | <https://flutter.dev/docs/cookbook#networking>  | <https://github.com/vaughan189/flutter-learning/tree/master/networking> | DONE |
 | News App  |  <https://flutternerd.com/news-app-with-newsapi-org-flutter/> | <https://github.com/vaughan189/flutter-learning/tree/master/news_app> | DONE |
-| OAuth User Authentication | <https://auth0.com/blog/get-started-with-flutter-authentication/>  | <https://github.com/vaughan189/flutter-learning/tree/master/oauth_user_authentication> | PENDING |
+| OAuth User Authentication | <https://auth0.com/blog/get-started-with-flutter-authentication/>  | <https://github.com/vaughan189/flutter-learning/tree/master/oauth_user_authentication> | DONE |
 | Offline first design | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/offline_first_design> | PENDING |
 | Payment App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/payment_app> | PENDING |
 | Persistence |  <https://flutter.dev/docs/cookbook/persistence> | <https://github.com/vaughan189/flutter-learning/tree/master/persistence> | DONE |
