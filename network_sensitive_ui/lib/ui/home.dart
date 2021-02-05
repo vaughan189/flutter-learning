@@ -84,6 +84,7 @@ class HomeView extends StatelessWidget {
       {double height,
       BuildContext context,
       Widget child,
+      // ignore: unused_element
       bool hasTopStroke = false}) {
     return Container(
         height: height,

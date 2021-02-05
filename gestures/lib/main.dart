@@ -51,6 +51,7 @@ class MyAppState extends State<MyApp> {
 
                 // Then show a snackbar.
                 Scaffold.of(context)
+                    // ignore: deprecated_member_use
                     .showSnackBar(SnackBar(content: Text("$item dismissed")));
               },
               // Show a red background as the item is swiped away.

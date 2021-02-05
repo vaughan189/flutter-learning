@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
                     children: <Widget>[
                       Text("${payload['username']}, here's the data:"),
                       Text(snapshot.data,
+                          // ignore: deprecated_member_use
                           style: Theme.of(context).textTheme.display1)
                     ],
                   )

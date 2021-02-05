@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
-import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
+import 'package:agora_rtc_engine/rtc_local_view.dart' as rtc_local_view;
+import 'package:agora_rtc_engine/rtc_remote_view.dart' as rtc_remote_view;
 import 'package:flutter/material.dart';
 
 import '../utils/settings.dart';
@@ -57,8 +57,9 @@ class _CallPageState extends State<CallPage> {
 
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();
+    // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
-    VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
+    var configuration = VideoEncoderConfiguration();
     configuration.dimensions = VideoDimensions(1920, 1080);
     await _engine.setVideoEncoderConfiguration(configuration);
     await _engine.joinChannel(Token, widget.channelName, null, 0);
@@ -111,11 +112,11 @@ class _CallPageState extends State<CallPage> {
 
   /// Helper function to get list of native views
   List<Widget> _getRenderViews() {
-    final List<StatefulWidget> list = [];
+    final list = <StatefulWidget>[];
     if (widget.role == ClientRole.Broadcaster) {
-      list.add(RtcLocalView.SurfaceView());
+      list.add(rtc_local_view.SurfaceView());
     }
-    _users.forEach((int uid) => list.add(RtcRemoteView.SurfaceView(uid: uid)));
+    _users.forEach((int uid) => list.add(rtc_remote_view.SurfaceView(uid: uid)));
     return list;
   }
 
