@@ -6,9 +6,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureProvider<MyModel>(
+    return StreamProvider<MyModel>(
       initialData: MyModel(someValue: 'default value'),
-      create: (context) => someAsyncFunctionToGetMyModel(),
+      create: (context) => getStreamOfMyModel(),
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(title: Text('My App')),
@@ -46,16 +46,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<MyModel> someAsyncFunctionToGetMyModel() async {
-  await Future.delayed(Duration(seconds: 3));
-  return MyModel(someValue: 'new data');
+Stream<MyModel> getStreamOfMyModel() {
+  return Stream<MyModel>.periodic(
+      Duration(seconds: 1), (x) => MyModel(someValue: '$x')).take(10);
 }
 
 class MyModel {
   MyModel({this.someValue});
   String someValue = 'Hello';
-  Future<void> doSomething() async {
-    await Future.delayed(Duration(seconds: 2));
+  void doSomething() {
     someValue = 'Goodbye';
     print(someValue);
   }
