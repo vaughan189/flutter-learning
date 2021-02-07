@@ -6,7 +6,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider<MyModel>(
+    return ChangeNotifierProvider<MyModel>(
       create: (context) => MyModel(),
       child: MaterialApp(
         home: Scaffold(
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(35),
                 color: Colors.blue[200],
-                child: Consumer(
+                child: Consumer<MyModel>(
                   builder: (context, myModel, child) {
                     return Text(myModel.someValue);
                   },
@@ -45,10 +45,25 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyModel {
+class MyModel with ChangeNotifier {
   String someValue = 'Hello';
+
   void doSomething() {
     someValue = 'Goodbye';
     print(someValue);
+    notifyListeners();
+  }
+}
+
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final myModel = Provider.of<MyModel>(context, listen: false);
+    return RaisedButton(
+      child: Text('Do something'),
+      onPressed: () {
+        myModel.doSomething();
+      },
+    );
   }
 }
