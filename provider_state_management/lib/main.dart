@@ -8,9 +8,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<MyModel>(create: (context) => MyModel()),
-        ChangeNotifierProvider<AnotherModel>(
-            create: (context) => AnotherModel()),
+        ChangeNotifierProvider<MyModel>(
+          create: (context) => MyModel(),
+        ),
+        ProxyProvider<MyModel, AnotherModel>(
+          update: (context, myModel, anotherModel) => AnotherModel(myModel),
+        ),
       ],
       child: MaterialApp(
         home: Scaffold(
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
                         return RaisedButton(
                           child: Text('Do something'),
                           onPressed: () {
-                            myModel.doSomething();
+                            myModel.doSomething('Goodbye');
                           },
                         );
                       },
@@ -52,27 +55,18 @@ class MyApp extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     color: Colors.red[200],
                     child: Consumer<AnotherModel>(
-                      builder: (context, myModel, child) {
+                      builder: (context, anotherModel, child) {
                         return RaisedButton(
-                          child: Text('Do something'),
+                          child: Text('Do something else'),
                           onPressed: () {
-                            myModel.doSomething();
+                            anotherModel.doSomethingElse();
                           },
                         );
                       },
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(35),
-                    color: Colors.yellow[200],
-                    child: Consumer<AnotherModel>(
-                      builder: (context, anotherModel, child) {
-                        return Text('${anotherModel.someValue}');
-                      },
-                    ),
-                  ),
                 ],
-              ),
+              )
             ],
           ),
         ),
@@ -83,18 +77,18 @@ class MyApp extends StatelessWidget {
 
 class MyModel with ChangeNotifier {
   String someValue = 'Hello';
-  void doSomething() {
-    someValue = 'Goodbye';
+  void doSomething(String value) {
+    someValue = value;
     print(someValue);
     notifyListeners();
   }
 }
 
-class AnotherModel with ChangeNotifier {
-  int someValue = 0;
-  void doSomething() {
-    someValue = 5;
-    print(someValue);
-    notifyListeners();
+class AnotherModel {
+  MyModel _myModel;
+  AnotherModel(this._myModel);
+  void doSomethingElse() {
+    _myModel.doSomething('See you later');
+    print('doing something else');
   }
 }
