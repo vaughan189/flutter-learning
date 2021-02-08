@@ -25,5 +25,6 @@ A list of all the apps created during learning flutter and dart.
 | Offline first design | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/offline_first_design> | PENDING |
 | Payment App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/payment_app> | PENDING |
 | Persistence |  <https://flutter.dev/docs/cookbook/persistence> | <https://github.com/vaughan189/flutter-learning/tree/master/persistence> | DONE |
+| Provider State Management App | <https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers-e842e18f45dd>  | <https://github.com/vaughan189/flutter-learning/tree/master/provider_state_management> | DONE |
 | Random Quote | <https://medium.com/flutter-community/flutter-essential-what-you-need-to-know-567ad25dcd8f> | <https://github.com/vaughan189/flutter-learning/tree/master/random_quote> | DONE |
 | Todo App | Self Learning app  | <https://github.com/vaughan189/flutter-learning/tree/master/todo_app> | DONE |
