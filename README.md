@@ -7,7 +7,7 @@ A list of all the apps created during learning flutter and dart.
 | Barcode Scanner  | <https://medium.com/flutter-community/building-flutter-qr-code-generator-scanner-and-sharing-app-703e73b228d3>  | <https://github.com/vaughan189/flutter-learning/tree/master/barcode_scanner> | DONE |
 | Blog App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/blog_app> | PENDING |
 | Building Layouts  | <https://flutter.dev/docs/development/ui/layout/tutorial>  | <https://github.com/vaughan189/flutter-learning/tree/master/building_layouts> | DONE |
-| Calling App  | <https://medium.com/devmins/flutter-video-call-plugin-ebb02c2327c>  | <https://github.com/vaughan189/flutter-learning/tree/master/calling_app> | PENDING |
+| Calling App  | <https://medium.com/devmins/flutter-video-call-plugin-ebb02c2327c>  | <https://github.com/vaughan189/flutter-learning/tree/master/calling_app> | DONE |
 | Chat App UI  | <https://www.freecodecamp.org/news/build-a-chat-app-ui-with-flutter/>  | <https://github.com/vaughan189/flutter-learning/tree/master/chat_app_ui> | DONE |
 | Design  | <https://flutter.dev/docs/cookbook/design>  | <https://github.com/vaughan189/flutter-learning/tree/master/design> | DONE |
 | Fluro Tutorial App  | <https://medium.com/flutter-community/routing-in-flutter-using-fluro-bedb564cb737>  | <https://github.com/vaughan189/flutter-learning/tree/master/fluro_tutorial> | DONE |
@@ -28,6 +28,6 @@ A list of all the apps created during learning flutter and dart.
 | Provider Tutorial | <https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers-e842e18f45dd>  | <https://github.com/vaughan189/flutter-learning/tree/master/provider_state_management> | DONE |
 | Random Quote | <https://medium.com/flutter-community/flutter-essential-what-you-need-to-know-567ad25dcd8f> | <https://github.com/vaughan189/flutter-learning/tree/master/random_quote> | DONE |
 | Riverpod Tutorial 1 : Counter app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-counter-app-ed3aa758f02f>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial> | DONE |
-| Riverpod Tutorial 2 : Timer app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-timer-app-186d04637775>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial_2> | PENDING |
+| Riverpod Tutorial 2 : Timer app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-timer-app-186d04637775>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial_2> | DONE |
 | Startup Namer App | <https://flutter.dev/docs/get-started/codelab>  | <https://github.com/vaughan189/flutter-learning/tree/master/startup_namer> | DONE |
 | Todo App | Self Learning app  | <https://github.com/vaughan189/flutter-learning/tree/master/todo_app> | DONE |
