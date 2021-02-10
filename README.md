@@ -24,7 +24,7 @@ A list of all the apps created during learning flutter and dart.
 | OAuth User Authentication | <https://auth0.com/blog/get-started-with-flutter-authentication/>  | <https://github.com/vaughan189/flutter-learning/tree/master/oauth_user_authentication> | DONE |
 | Offline first design | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/offline_first_design> | PENDING |
 | Payment App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/payment_app> | PENDING |
-| Persistence |  <https://flutter.dev/docs/cookbook/persistence> | <https://github.com/vaughan189/flutter-learning/tree/master/persistence> | DONE |
+| Persistence |  <https://dev.to/thepythongeeks/step-by-step-to-store-data-locally-in-flutter-1mc9> | <https://github.com/vaughan189/flutter-learning/tree/master/persistence> | DONE |
 | Provider Tutorial | <https://medium.com/flutter-community/making-sense-all-of-those-flutter-providers-e842e18f45dd>  | <https://github.com/vaughan189/flutter-learning/tree/master/provider_state_management> | DONE |
 | Random Quote | <https://medium.com/flutter-community/flutter-essential-what-you-need-to-know-567ad25dcd8f> | <https://github.com/vaughan189/flutter-learning/tree/master/random_quote> | DONE |
 | Riverpod Tutorial 1 : Counter app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-counter-app-ed3aa758f02f>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial> | DONE |

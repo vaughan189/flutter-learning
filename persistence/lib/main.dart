@@ -1,107 +1,219 @@
+import 'dart:math';
 import 'dart:async';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
-import 'package:flutter/widgets.dart';
-
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import './db/service.dart';
+import 'random_number.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final Future<Database> database = openDatabase(
-    join(await getDatabasesPath(), 'doggie_database.db'),
-    onCreate: (db, version) {
-      return db.execute(
-        "CREATE TABLE dogs(id NTEGER PRIMARY KEY AUTOINCREMENTY, name TEXT, age INTEGER)",
-      );
-    },
-    version: 1,
-  );
+  DatabaseService();
+  runApp(MyApp());
+}
 
-  Future<void> insertDog(Dog dog) async {
-    final Database db = await database;
-    await db.insert(
-      'dogs',
-      dog.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+}
 
-  Future<List<Dog>> dogs() async {
-    final Database db = await database;
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
 
-    final List<Map<String, dynamic>> maps = await db.query('dogs');
+  final String title;
 
-    return List.generate(maps.length, (i) {
-      return Dog(
-        id: maps[i]['id'],
-        name: maps[i]['name'],
-        age: maps[i]['age'],
-      );
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  DatabaseService dbService = DatabaseService();
+  int _savedNumber;
+  int _randomNumber;
+  int _numberInDatabase;
+  int _numberInDatabaseId;
+  int _numberInFile;
+
+  @override
+  void initState() {
+    super.initState();
+    _savedNumber = 0;
+    _randomNumber = 0;
+    _numberInDatabase = 0;
+    _numberInDatabaseId = 0;
+    _numberInFile = 0;
+  }
+
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/randoms.txt');
+  }
+
+  void _writeNumberToFile() async {
+    final file = await _localFile;
+    file.writeAsString('$_randomNumber');
+
+    setState(() {
+      _numberInFile = _randomNumber;
     });
   }
 
-  Future<void> updateDog(Dog dog) async {
-    final db = await database;
+  void _readNumberFromFile() async {
+    try {
+      final file = await _localFile;
+      // Read the file.
+      String contents = await file.readAsString();
 
-    await db.update(
-      'dogs',
-      dog.toMap(),
-      where: "id = ?",
-      whereArgs: [dog.id],
-    );
+      setState(() {
+        _randomNumber = int.parse(contents);
+      });
+    } catch (e) {
+      setState(() {
+        _randomNumber = 0;
+      });
+    }
   }
 
-  Future<void> deleteDog(int id) async {
-    final db = await database;
 
-    await db.delete(
-      'dogs',
-      where: "id = ?",
-      whereArgs: [id],
-    );
+  void _generateRandomNumber() {
+    setState(() {
+      _randomNumber = Random().nextInt(pow(2, 31));
+    });
   }
 
-  var fido = Dog(
-    id: 0,
-    name: 'Fido',
-    age: 35,
-  );
+  void _saveNumber() async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt('savedNumber', _randomNumber);
 
-  await insertDog(fido);
+    setState(() {
+      _savedNumber = _randomNumber;
+    });
+  }
 
-  print(await dogs());
+  void _loadNumber() async {
+    final SharedPreferences prefs = await _prefs;
+    final savedNumber = prefs.getInt('savedNumber') ?? 0;
 
-  fido = Dog(
-    id: fido.id,
-    name: fido.name,
-    age: fido.age + 7,
-  );
-  await updateDog(fido);
+    setState(() {
+      _randomNumber = savedNumber;
+    });
+  }
 
-  print(await dogs());
+  void _saveNumberToDb() async {
+    final number = RandomNumber.fromMap({
+      "value": _randomNumber,
+      "createdTime": DateTime.now()
+    });
+    final int id = await dbService.insertNumber(number);
 
-  await deleteDog(fido.id);
+    setState(() {
+      _numberInDatabase = _randomNumber;
+      _numberInDatabaseId = id;
+    });
+  }
 
-  print(await dogs());
-}
-
-class Dog {
-  final int id;
-  final String name;
-  final int age;
-
-  Dog({this.id, this.name, this.age});
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'age': age,
-    };
+  void _loadNumberFromDb() async {
+    await dbService.getNumber(_numberInDatabaseId).then((number) => {
+      setState(() {
+      _randomNumber = number.value;
+    })
+    });
+    
   }
 
   @override
-  String toString() {
-    return 'Dog{id: $id, name: $name, age: $age}';
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'You have generated random number:',
+              ),
+              Text(
+                '$_randomNumber',
+                // ignore: deprecated_member_use
+                style: Theme.of(context).textTheme.display2,
+              ),
+              Text(
+                'You saved this number in SharedPreference',
+              ),
+              Text(
+                '$_savedNumber',
+                // ignore: deprecated_member_use
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Text(
+                'You saved this number in SQLite',
+              ),
+              Text(
+                '$_numberInDatabase',
+                // ignore: deprecated_member_use
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Text(
+                'You saved this number in local file',
+              ),
+              Text(
+                '$_numberInFile',
+                // ignore: deprecated_member_use
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  OutlineButton(
+                      onPressed: () => _loadNumber(), child: Text('Load')),
+                  OutlineButton(
+                      onPressed: () => _generateRandomNumber(),
+                      child: Text('Random')),
+                  OutlineButton(
+                      onPressed: () => _saveNumber(), child: Text('Save')),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  OutlineButton(
+                      onPressed: () => _loadNumberFromDb(), child: Text('Load from SQLite')),
+                  OutlineButton(
+                      onPressed: () => _saveNumberToDb(), child: Text('Save to SQLite')),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  OutlineButton(
+                      onPressed: () => _readNumberFromFile(), child: Text('Read from file')),
+                  OutlineButton(
+                      onPressed: () => _writeNumberToFile(), child: Text('Write to file')),
+                ],
+              ),
+            ],
+          ),
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
