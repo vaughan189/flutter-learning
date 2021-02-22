@@ -30,5 +30,6 @@ A list of all the apps created during learning flutter and dart.
 | Random Quote | <https://medium.com/flutter-community/flutter-essential-what-you-need-to-know-567ad25dcd8f> | <https://github.com/vaughan189/flutter-learning/tree/master/random_quote> | DONE |
 | Riverpod Tutorial 1 : Counter app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-counter-app-ed3aa758f02f>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial> | DONE |
 | Riverpod Tutorial 2 : Timer app | <https://medium.com/flutter-community/flutter-riverpod-tutorial-timer-app-186d04637775>  | <https://github.com/vaughan189/flutter-learning/tree/master/riverpod_tutorial_2> | DONE |
+| Scoped Model Tutorial | <https://medium.com/flutter-community/flutter-architecture-scopedmodel-a-complete-guide-to-real-world-architecture-205a24674964>  | <https://github.com/vaughan189/flutter-learning/tree/master/scoped_model_tutorial> | DONE |
 | Startup Namer App | <https://flutter.dev/docs/get-started/codelab>  | <https://github.com/vaughan189/flutter-learning/tree/master/startup_namer> | DONE |
 | Todo App | Self Learning app  | <https://github.com/vaughan189/flutter-learning/tree/master/todo_app> | DONE |

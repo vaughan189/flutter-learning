@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'my_screen_viewmodel.dart';
+import 'screen_1_viewmodel.dart';
 
 class MyScreen extends StatelessWidget {
   @override

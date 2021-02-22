@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import './screens/counter_screen/counter_screen.dart';
 
-void main() => runApp(MyApp());
+import 'service_locator.dart';
+
+import 'ui/views/home_view.dart';
+
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -11,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CounterScreen(),
+      home: HomeView(),
     );
   }
 }
