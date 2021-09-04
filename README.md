@@ -6,6 +6,7 @@ A list of all the apps created during learning flutter and dart.
 | ------------- | ------------- | ------------- | ------------- |
 | Architecture | <https://medium.com/flutter-community/a-beginners-guide-to-architecting-a-flutter-app-1e9053211a74>  | <https://github.com/vaughan189/flutter-learning/tree/master/architecture> | DONE |
 | Barcode Scanner  | <https://medium.com/flutter-community/building-flutter-qr-code-generator-scanner-and-sharing-app-703e73b228d3>  | <https://github.com/vaughan189/flutter-learning/tree/master/barcode_scanner> | DONE |
+| BLOC Pattern App | <https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1>  | <https://github.com/vaughan189/flutter-learning/tree/master/bloc_pattern> | IN-PROGRESS |
 | Blog App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/blog_app> | PENDING |
 | Building Layouts  | <https://flutter.dev/docs/development/ui/layout/tutorial>  | <https://github.com/vaughan189/flutter-learning/tree/master/building_layouts> | DONE |
 | Calling App  | <https://medium.com/devmins/flutter-video-call-plugin-ebb02c2327c>  | <https://github.com/vaughan189/flutter-learning/tree/master/calling_app> | DONE |
