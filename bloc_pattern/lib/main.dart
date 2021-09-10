@@ -4,5 +4,5 @@ import 'src/app.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
-  runApp(App());
+  runApp(const App());
 }

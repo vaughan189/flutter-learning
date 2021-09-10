@@ -11,6 +11,7 @@ A list of all the apps created during learning flutter and dart.
 | Building Layouts  | <https://flutter.dev/docs/development/ui/layout/tutorial>  | <https://github.com/vaughan189/flutter-learning/tree/master/building_layouts> | DONE |
 | Calling App  | <https://medium.com/devmins/flutter-video-call-plugin-ebb02c2327c>  | <https://github.com/vaughan189/flutter-learning/tree/master/calling_app> | DONE |
 | Chat App UI  | <https://www.freecodecamp.org/news/build-a-chat-app-ui-with-flutter/>  | <https://github.com/vaughan189/flutter-learning/tree/master/chat_app_ui> | DONE |
+| Counter BLOC App  | <https://dev.to/abhishekdoshi26/bloc-pattern-in-flutter-part-1-33kh>  | <https://github.com/vaughan189/flutter-learning/tree/master/counter_bloc_app> | DONE |
 | Design  | <https://flutter.dev/docs/cookbook/design>  | <https://github.com/vaughan189/flutter-learning/tree/master/design> | DONE |
 | Fluro Tutorial App  | <https://medium.com/flutter-community/routing-in-flutter-using-fluro-bedb564cb737>  | <https://github.com/vaughan189/flutter-learning/tree/master/fluro_tutorial> | DONE |
 | Forms  | <https://flutter.dev/docs/cookbook/forms>  | <https://github.com/vaughan189/flutter-learning/tree/master/forms> | DONE |
