@@ -4,7 +4,6 @@ A list of all the apps created during learning flutter and dart.
 
 | App  | Blog/Tutorial/Documentation | App Folder | Status |
 | ------------- | ------------- | ------------- | ------------- |
-| Architecture | <https://medium.com/flutter-community/a-beginners-guide-to-architecting-a-flutter-app-1e9053211a74>  | <https://github.com/vaughan189/flutter-learning/tree/master/architecture> | DONE |
 | Barcode Scanner  | <https://medium.com/flutter-community/building-flutter-qr-code-generator-scanner-and-sharing-app-703e73b228d3>  | <https://github.com/vaughan189/flutter-learning/tree/master/barcode_scanner> | DONE |
 | BLOC Pattern App | <https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1>  | <https://github.com/vaughan189/flutter-learning/tree/master/bloc_pattern> | DONE |
 | Blog App | PENDING  | <https://github.com/vaughan189/flutter-learning/tree/master/blog_app> | PENDING |
@@ -19,6 +18,7 @@ A list of all the apps created during learning flutter and dart.
 | Introduction to Widgets  | <https://flutter.dev/docs/cookbook/testing/widget>  | <https://github.com/vaughan189/flutter-learning/tree/master/introduction_to_widgets> | DONE |
 | JWT User Authentication | <https://dev.to/carminezacc/user-authentication-jwt-authorization-with-flutter-and-node-176l>  | <https://github.com/vaughan189/flutter-learning/tree/master/jwt_user_authentication> | DONE |
 | Lists  | <https://flutter.dev/docs/cookbook/lists>  | <https://github.com/vaughan189/flutter-learning/tree/master/lists> | DONE |
+| MVVM Architecture | <https://medium.com/flutter-community/a-beginners-guide-to-architecting-a-flutter-app-1e9053211a74>  | <https://github.com/vaughan189/flutter-learning/tree/master/mvvm_architecture> | DONE |
 | My App  | <https://flutter.dev/docs/get-started/test-drive?tab=vscode>  | <https://github.com/vaughan189/flutter-learning/tree/master/my_app> | DONE |
 | Navigation and Routing  | <https://flutter.dev/docs/development/ui/navigation>  | <https://github.com/vaughan189/flutter-learning/tree/master/navigation_and_routing> | DONE |
 | Network Sensitive UI  | <https://medium.com/flutter-community/build-a-network-sensitive-ui-in-flutter-using-provider-and-connectivity-ddad140c9ff8>  | <https://github.com/vaughan189/flutter-learning/tree/master/network_sensitive_ui> | DONE |
