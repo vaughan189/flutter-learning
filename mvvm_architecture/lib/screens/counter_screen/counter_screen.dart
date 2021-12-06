@@ -22,7 +22,7 @@ class CounterScreen extends StatelessWidget {
               Text(
                 '${model.counter}',
                 // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),

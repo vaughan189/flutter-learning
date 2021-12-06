@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^3.0.0
+  flutter_bloc: ^8.0.0
   http: ^0.12.0
   meta: ^1.1.6
   equatable: ^1.0.0
@@ -16,9 +16,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^4.1.1
+  mockito: ^5.0.16
   test_coverage: ^0.4.0
-  bloc_test: ^3.0.0
+  bloc_test: ^9.0.1
 
 flutter:
   uses-material-design: true

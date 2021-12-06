@@ -21,15 +21,14 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(title: Text("Secret Data Screen")),
         body: Center(
           child: FutureBuilder(
-            future:
-                http.read('$apiEndpoint/user', headers: {"auth": jwt}),
+            future: http.read('$apiEndpoint/user', headers: {"auth": jwt}),
             builder: (context, snapshot) => snapshot.hasData
                 ? Column(
                     children: <Widget>[
                       Text("${payload['username']}, here's the data:"),
                       Text(snapshot.data,
                           // ignore: deprecated_member_use
-                          style: Theme.of(context).textTheme.display1)
+                          style: Theme.of(context).textTheme.bodyText1)
                     ],
                   )
                 : snapshot.hasError

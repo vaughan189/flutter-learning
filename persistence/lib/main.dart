@@ -92,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-
   void _generateRandomNumber() {
     setState(() {
       _randomNumber = Random().nextInt(pow(2, 31));
@@ -118,10 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _saveNumberToDb() async {
-    final number = RandomNumber.fromMap({
-      "value": _randomNumber,
-      "createdTime": DateTime.now()
-    });
+    final number = RandomNumber.fromMap(
+        {"value": _randomNumber, "createdTime": DateTime.now()});
     final int id = await dbService.insertNumber(number);
 
     setState(() {
@@ -132,11 +129,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _loadNumberFromDb() async {
     await dbService.getNumber(_numberInDatabaseId).then((number) => {
-      setState(() {
-      _randomNumber = number.value;
-    })
-    });
-    
+          setState(() {
+            _randomNumber = number.value;
+          })
+        });
   }
 
   @override
@@ -155,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(
                 '$_randomNumber',
                 // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.display2,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               Text(
                 'You saved this number in SharedPreference',
@@ -163,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(
                 '$_savedNumber',
                 // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
                 'You saved this number in SQLite',
@@ -171,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(
                 '$_numberInDatabase',
                 // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
                 'You saved this number in local file',
@@ -179,36 +175,40 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(
                 '$_numberInFile',
                 // ignore: deprecated_member_use
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OutlineButton(
+                  OutlinedButton(
                       onPressed: () => _loadNumber(), child: Text('Load')),
-                  OutlineButton(
+                  OutlinedButton(
                       onPressed: () => _generateRandomNumber(),
                       child: Text('Random')),
-                  OutlineButton(
+                  OutlinedButton(
                       onPressed: () => _saveNumber(), child: Text('Save')),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OutlineButton(
-                      onPressed: () => _loadNumberFromDb(), child: Text('Load from SQLite')),
-                  OutlineButton(
-                      onPressed: () => _saveNumberToDb(), child: Text('Save to SQLite')),
+                  OutlinedButton(
+                      onPressed: () => _loadNumberFromDb(),
+                      child: Text('Load from SQLite')),
+                  OutlinedButton(
+                      onPressed: () => _saveNumberToDb(),
+                      child: Text('Save to SQLite')),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  OutlineButton(
-                      onPressed: () => _readNumberFromFile(), child: Text('Read from file')),
-                  OutlineButton(
-                      onPressed: () => _writeNumberToFile(), child: Text('Write to file')),
+                  OutlinedButton(
+                      onPressed: () => _readNumberFromFile(),
+                      child: Text('Read from file')),
+                  OutlinedButton(
+                      onPressed: () => _writeNumberToFile(),
+                      child: Text('Write to file')),
                 ],
               ),
             ],
