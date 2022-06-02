@@ -16,7 +16,8 @@ Future<void> initializeDependencies() async {
   // Dependencies
   injector.registerSingleton<NewsApiService>(NewsApiService(injector()));
   injector.registerSingleton<ArticlesRepository>(
-      ArticlesRepositoryImpl(injector()));
+    ArticlesRepositoryImpl(injector()),
+  );
 
   // UseCases
   injector
@@ -24,5 +25,6 @@ Future<void> initializeDependencies() async {
 
   // Blocs
   injector.registerFactory<RemoteArticlesBloc>(
-      () => RemoteArticlesBloc(injector()));
+    () => RemoteArticlesBloc(injector()),
+  );
 }
